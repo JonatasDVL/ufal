@@ -1,5 +1,5 @@
 """ Algoritimos e Programação de Computadores
- Aula 05: Estruturas de Decisão 
+ Aula 05: Estruturas de Repetição 
  Professor: Rodolfo Carneiro Cavalcante
  Aluno: Jônatas Duarte Vital Leite
 
