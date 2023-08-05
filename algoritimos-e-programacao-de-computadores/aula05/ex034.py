@@ -3,9 +3,10 @@
  Professor:Rodolfo Carneiro Cavalcante
  Aluno: Jônatas Duarte Vital Leite
 
- Exercício 25:
-    6. Faça um algoritmo que recebe dois conjuntos de inteiros A e B e calcula a distância euclidiana entre estes dois conjuntos
-   
+ Exercício 34:
+    15. Algoritmo que recebe dois conjuntos de inteiros A e B de tamanho n e calcula a distância euclidiana entre esses conjuntos. A distância euclidiana é dada por
+    D(A,B) = √(A[1] – B[1])² + (A[2] - B[2])² + … + (A[n] - B[n])²
+
 """
 
 conjuntoA = []

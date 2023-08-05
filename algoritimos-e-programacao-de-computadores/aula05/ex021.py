@@ -13,14 +13,13 @@ print("Este programa irá contar o número de valores negativos em um conjunto."
 numeros = []
 negativos = []
 contador = 0
-i = int(input("Quantos números você quer adicionar ao conjunto: "))
-j = 0
-while(i != j):
-    numeros.append(int(input(f"Digite o {j+1} número para adicionar ao conjunto: ")))
-    if(numeros[j] < 0):
+x = int(input("Quantos números você quer adicionar ao conjunto: "))
+
+for i in range(x):
+    numeros.append(int(input(f"Digite o {i+1} número para adicionar ao conjunto: ")))
+    if(numeros[i] < 0):
         contador += 1  
-        negativos.append(numeros[j])
-    j += 1
+        negativos.append(numeros[i])
 
 print(negativos)
 print(f"{contador} é a quantidade de números negativos do conjunto criado.")

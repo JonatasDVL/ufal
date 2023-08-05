@@ -13,6 +13,14 @@ numero = int(input("Digite o número para calcular o seu fatorial: "))
 fator = 1
 produto = 1
 
+if(numero >= 0):
+    for fator in range(1,numero+1):
+        produto = produto * fator
+    print(f"O fatorial de {numero} é {produto}")
+else:
+    print("Você digitou um número inválido.")
+   
+""" outra forma:
 if(numero == 0):
     print("O fatorial de 0 é 1 ")
 elif(numero > 0):
@@ -23,3 +31,4 @@ elif(numero > 0):
 else:
     print("Você digitou um número inválido.")
     
+"""
