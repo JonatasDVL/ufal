@@ -11,8 +11,13 @@
 
 """
 
+
+
+
+"""
 normal = [" ","A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "Y", "X", "Z"]
 criptografada = [" ", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "Y", "X", "Z", "A", "B", "C"]
+
 
 texto = input("Digite um texto para criptografar: ").upper()
 textoCriptografado = []
@@ -22,7 +27,7 @@ for i in range(0, len(texto)):
     for j in range(0, len(normal)):
         if(texto[i] == normal[j]):
             textoCriptografado.append(criptografada[j])
-        elif(texto[i] not in criptografada) and j == 26:
+        elif((texto[i] not in criptografada) and j == 26):
             textoCriptografado.append(texto[i])
 
 separador = ''
@@ -30,3 +35,4 @@ textoCriptografadoA = separador.join(textoCriptografado)
 
 print(textoCriptografadoA)
 
+"""

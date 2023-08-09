@@ -8,7 +8,7 @@
    
 """
 
-print("Este programa irá recebe um conjunto de inteiros ee um valor n e indicará qual o valor mais próximo de n no conjunto.")
+print("Este programa irá recebe um conjunto de inteiros e um valor n e indicará qual o valor mais próximo de n no conjunto.")
 
 numeros = []
 contador = 0
@@ -27,19 +27,18 @@ n = float(input("Qual o valor de n: "))
 proximo = numeros[0]
 
 while(len(numeros) > i and proximo != n):  
-    if((proximo - n) < 0 and (numeros[i] - n) < 0):
-        if((proximo + n) > (numeros[i] + n)):
-            proximo = numeros[i]
-    elif((proximo - n) < 0):
-        if((proximo + n) > (numeros[i] - n)):
-            proximo = numeros[i]
-    elif((numeros[i] - n) < 0):
-        if((proximo - n) > (numeros[i] + n)):
-            proximo = numeros[i]
-    else:
+    if(proximo > n and numeros[i] > n):
         if((proximo - n) > (numeros[i] - n)):
             proximo = numeros[i]
-
+    elif(proximo < n and numeros[i] > n):
+        if((n - proximo) > (numeros[i] - n)):
+            proximo = numeros[i]
+    elif(proximo > n and numeros[i] < n):
+        if((proximo - n) > (n - numeros[i])):
+            proximo = numeros[i]
+    elif(proximo < n and numeros[i] < n):
+        if((n - proximo) > (n - numeros[i])):
+            proximo = numeros[i]
     i += 1
 
 if(proximo == 0):
