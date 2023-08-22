@@ -18,18 +18,17 @@ def verificandoSubstring(palavraA, palavraB):
         temp = palavraA
         palavraA = palavraB
         palavraB = temp
-    contador = 0
-    for i in range(len(palavraA)):
-        if(contador != len(palavraB)):
-            if(palavraA[i] == palavraB[contador]): #b != r
-                contador += 1
-            else:
-                contador = 0 #b == b
-                if(palavraA[i] == palavraB[contador]):
-                    contador += 1
+    i = 0 # posição de palavraA
+    j = 0 # posição de palavraB
+    while i < len(palavraA) and j < len(palavraB):
+        if(palavraA[i] == palavraB[j]):
+            j += 1
         else:
-            break
-    if(contador == len(palavraB)):
+            j = 0
+            if(palavraA[i] == palavraB[j]):
+                j += 1
+        i += 1
+    if(j == len(palavraB)):
         substring = f"{palavraB} é uma substring de {palavraA}."
     else:
         substring = f"{palavraB} não é uma substring de {palavraA}."
