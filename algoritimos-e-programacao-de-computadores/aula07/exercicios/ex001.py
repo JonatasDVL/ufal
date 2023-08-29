@@ -8,14 +8,25 @@
 """
 
 def lerQuantidadeVogais(frase):
-    vogais = "aeiou"
-    frase.lower()
-    quantidadeVogais = {}
-    quantidadeVogais = [("A:", 0), ("B:", 0), ("C:", 0), ("D:", 0), ("E:", 0)]
+    vogais = "AEIOU"
+    vogaisAcentuadas = "ÂÃÁÀÉÊÍÎÓÔÕÚÛ"
+    vogaisAcentuadasSemAcento = "AAAAEEIIOOOUU"
+    frase = frase.upper()
+    quantidadeVogais = {"A": 0, "E": 0, "I": 0, "O": 0, "U": 0}
     for i in range(len(frase)):
-        for j in (len(vogais)):
-            if frase[i] == vogais[j]: 
-                quantidadeVogais[j][1] += + 1
+        condicao = False
+        for j in vogais:
+            if frase[i] == j: 
+                quantidadeVogais[j] += 1
+                condicao = True
+                break
+        if condicao == False:
+            x = 0
+            for j in vogaisAcentuadasSemAcento:
+                if frase[i] == vogaisAcentuadas[x]: 
+                    quantidadeVogais[j] += 1
+                    break
+                x += 1
     return quantidadeVogais 
 
 frase = "Ana Subiu o pé de feijão."
