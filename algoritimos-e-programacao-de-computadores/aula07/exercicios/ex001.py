@@ -29,5 +29,5 @@ def lerQuantidadeVogais(frase):
                 x += 1
     return quantidadeVogais 
 
-frase = "Ana Subiu o pé de feijão."
+frase = input("Digite uma frase: ") 
 print(lerQuantidadeVogais(frase))
