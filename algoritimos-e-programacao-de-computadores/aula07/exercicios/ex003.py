@@ -88,14 +88,41 @@ def excluirTelefone(agendaTelefonica):
 
 def excluirNome(agendaTelefonica):
     nome = input("Digite o nome do contato que deseja excluir: ") 
+    resposta = "N"
+    if len(agendaTelefonica) != 0:
+        for chave in agendaTelefonica.keys(): 
+            if chave == nome:
+                del agendaTelefonica[nome]
+                resposta = "S"
+                break
+    if resposta == "N":
+        print("Não tem nenhum contanto com esse nome!")
+    else:
+        print(f"O contato {nome} foi deletado!")  
     return agendaTelefonica
 
 def consultarTelefone(agendaTelefonica):
-    nome = input("Digite o nome do contato que deseja excluir: ") 
+    print("Contatos:")
+    for chave in agendaTelefonica:
+        print(chave)
+    nome = input("Digite o nome do contato que deseja consultar os número do telefone: ") 
+    if len(agendaTelefonica) != 0:
+        for chave in agendaTelefonica:
+            resposta = "N"
+            if chave == nome:
+                resposta = "S"
+                break
+    else:
+        resposta = "N"
+    if resposta == "S":
+        print(f"{nome}: |",end="")
+        for elemento in agendaTelefonica[nome]:
+            print(f"{elemento}|",end="")
+        print("")
     return agendaTelefonica
 
 agendaTelefonica = {}
-opcao = "a"
+opcao = "."
 
 while opcao != "":
     opcao = input(f"\n1.Para incluir um novo contato; \n2.Para incluir um novo telefone a um contato já existente; \n3.Para excluir um número de um contato já existente; \n4.Para excluir um contato;\n5.Para consultar um telefone;\n\nEscolha uma das opções descrita acima: ")
