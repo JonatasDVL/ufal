@@ -23,34 +23,42 @@
     # ◦ Para estilumar o raciocínio modular, crie pelo menos uma função adicional no seu
     # programa (além da função “inicio”)
 
+def inicio(status):
+    nota1 = float(input("Qual foi a primeira nota do aluno: "))
+    nota2 = float(input("Qual foi a segunda nota do aluno: "))
+
+    if nota1 < 7 or nota2 < 7:
+        reavaliacao = float(input("Digite a nota da reavalização: "))
+        if nota1 > nota2 and nota2 < reavaliacao:
+            nota2 = reavaliacao
+        elif nota1 < nota2 and nota1 < reavaliacao:
+            nota1 = reavaliacao
+        
+    media = calcularMedia(nota1, nota2)
+
+    if media >= 5 and media < 7:
+        final = float(input("Qual foi a nota final do aluno: "))
+        media = (6 * media + 4 * final) / 10
+        status = "."
+    status = calcularStatus(media, status)
+    return status
+
 def calcularMedia(nota1, nota2):
     media = (nota1 + nota2) / 2
     return media
 
 def calcularStatus(media, status=None):
-    if media >= 7 and status == "RP: Reprovado por Média":
+    if media >= 5.5 and status == ".":
         status = "AF: Aprovado na Final"
-    elif media < 7 and status == "RP: Reprovado por Média":
+    elif media < 5.5 and status == ".":
         status = "RF: Reprovado na Final"
     elif media >= 7:
         status = "AP: Aprovado por Média"
-    else:
+    elif media < 5:
         status = "RP: Reprovado por Média"
-    
     return status
 
 status = None
 
-nota1 = float(input("Qual foi a primeira nota do aluno: "))
-nota2 = float(input("Qual foi a segunda nota do aluno: "))
-
-if nota1 < 7 or nota2 < 7:
-    nota3 = float(input("Digite a nota da reavalização: "))
-    if nota1 > nota2 and nota2 < nota3:
-        nota2 = nota3
-    elif nota1 < nota2 and nota1 < nota3:
-        nota1 = nota3
-media = calcularMedia(nota1, nota2)
-status = calcularStatus(media, status)
-
+status = inicio(status)
 print(status)
