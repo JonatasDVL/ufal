@@ -5,6 +5,27 @@
 #     257.32.4.5
 # O programa deve mostrar os IPs indicando os que são válidos e inválidos (um endereço ip válido não pode ter uma de suas partes maior que 255).
 
-arquivo = open(r"C:\Users\jonat\OneDrive\Documentos\GitHub\ufal\algoritimos-e-programacao-de-computadores\aula08\exercicios\ex001\arquivo.txt", "w")
-arquivo.write("")
+enderecos = []
+
+arquivo = open(r"ex002\arquivo.txt", "r")
+for linha in arquivo.readlines():
+    linha = linha.replace("\n","")
+    enderecos.append(linha)
 arquivo.close()
+
+print(enderecos)
+
+for endereco in enderecos:
+    partes = endereco.split(".")
+    cond = 0
+    for parte in partes:
+        parte = int(parte)
+        if parte > 255:
+            print(f"O endereço ip, {endereco}, não é válido")
+            break
+        else: 
+            cond += 1
+    if cond == 4:
+        print(f"O endereço ip, {endereco}, é válido")
+        
+    
