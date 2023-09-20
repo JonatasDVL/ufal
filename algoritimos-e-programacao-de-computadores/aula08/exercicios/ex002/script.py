@@ -18,14 +18,16 @@ print(enderecos)
 for endereco in enderecos:
     partes = endereco.split(".")
     cond = 0
-    for parte in partes:
-        parte = int(parte)
-        if parte > 255:
-            print(f"O endereço ip, {endereco}, não é válido")
-            break
-        else: 
-            cond += 1
-    if cond == 4:
-        print(f"O endereço ip, {endereco}, é válido")
-        
+    if len(partes) == 4:
+        for parte in partes:
+            parte = int(parte)
+            if parte > 255 or parte < 0:
+                print(f"O endereço ip, {endereco}, não é válido")
+                break
+            else: 
+                cond += 1
+        if cond == 4:
+            print(f"O endereço ip, {endereco}, é válido")
+    else: 
+        print(f"O endereço ip, {endereco}, não é válido")
     
