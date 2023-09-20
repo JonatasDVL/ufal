@@ -1,12 +1,12 @@
-Janeiro 35.5
-Fervereiro 36.7
-Março 34.6
-Abril 32.4
-Maio 32.0
-Junho 31.7
-Julho 30.6
-Agosto 30.0
-Setembro 31.2
-Outubro 32.7
-Novembro 33.1
-Dezembro 33.9
+35.5
+36.7
+34.6
+32.4
+32.0
+31.7
+30.6
+30.0
+31.2
+32.7
+33.1
+33.9
