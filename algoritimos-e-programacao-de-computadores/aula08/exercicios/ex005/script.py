@@ -6,7 +6,7 @@ def lerAgendaTelefonica():
     for linha in arquivo.readlines():
         atributosContatos = []
         linha = linha.replace("\n", "")
-        atributosContatos = linha.split(" ")
+        atributosContatos = linha.split("|")
         contato = {atributosContatos[0]: atributosContatos[1]}
         agendaTelefonica |= contato
     return agendaTelefonica
@@ -24,7 +24,7 @@ def inserirContatos():
     while resposta == "s":
         nome = input("Digite o nome da pessoa: ")
         telefone = input("Digite o número de telefone: ")
-        arquivo.write(f"{nome} {telefone}\n")
+        arquivo.write(f"{nome}|{telefone}\n")
         resposta = input("Digite (s) se desejas continuar: ") 
     arquivo.close()
     agendaTelefonica = lerAgendaTelefonica()
@@ -35,20 +35,24 @@ def removerContatos(agendaTelefonica):
     while resposta == "s":
         exibirContatos(agendaTelefonica)
         telefone = input("Digite o telefone do contato que desejas remover: ")
+        cond = 0
         for chave, valor in agendaTelefonica.items():
             if valor == telefone:
                 agendaTelefonica.pop(chave)
                 print("Contato removido com sucesso.")
+                cond = 1
                 break
+        if cond == 0:
+            print("Não foi possivel remover esse contato, pois esse número de telefone não existe.")
         resposta = input("Digite (s) se desejas continuar: ") 
     
     arquivo = open(r"ex005\arquivo.txt", "w")
     for nome, telefone in agendaTelefonica.items():
-        arquivo.write(f"{nome} {telefone}\n") 
+        arquivo.write(f"{nome}|{telefone}\n") 
     arquivo.close()
     return agendaTelefonica
 
-def editarContatos(agendaTelefonica): # falta ajeitar
+def editarContatos(agendaTelefonica): 
     resposta = "s"
     while resposta == "s":
         exibirContatos(agendaTelefonica)
@@ -57,26 +61,34 @@ def editarContatos(agendaTelefonica): # falta ajeitar
         if opcao == "nome":
             for chave, valor in agendaTelefonica.items():
                 if valor == telefone:
-                    agendaTelefonica[]
+                    novaChave = input("Digite o novo nome do contato: ")
+                    agendaTelefonica[novaChave] = agendaTelefonica.pop(chave) 
                     print("Contato editado com sucesso.")
                     break
         elif opcao == "telefone":
             for chave, valor in agendaTelefonica.items():
                 if valor == telefone:
-                    agendaTelefonica
+                    novoValor = input("Digite o novo telefone do contato: ")
+                    agendaTelefonica[chave] = novoValor
                     print("Contato editado com sucesso.")
                     break
+        else:
+            print("Opção inválida, tente novamente!")
         resposta = input("Digite (s) se desejas continuar: ") 
     arquivo = open(r"ex005\arquivo.txt", "w")
     for nome, telefone in agendaTelefonica.items():
-        arquivo.write(f"{nome} {telefone}\n") 
+        arquivo.write(f"{nome}|{telefone}\n") 
     arquivo.close()
     return agendaTelefonica
 
 def buscarContatos(agendaTelefonica):
-    
-    return
-
+    telefone = input("Digite o número de telefone que desejas buscar: ")    
+    for chave, valor in agendaTelefonica.items():
+        if valor == telefone:
+            print(f"O telefone {valor} é do contato {chave}")
+            return
+    print("Não foi possivel achar esse número de telefone")
+    return 
 def inicio():
     agendaTelefonica = lerAgendaTelefonica()
     resposta = "s"

@@ -5,19 +5,11 @@
 # o programa deve gerar um dicionário no qual as chaves são as identidades e os valores os nomes. Ao final o programa deve exibir o dicionário
 
 dados = []
-
-arquivo = open(r"C:\Users\jonat\OneDrive\Documentos\GitHub\ufal\algoritimos-e-programacao-de-computadores\aula08\exercicios\ex001\arquivo.txt", "r")
-for linha in arquivo.readlines():
-    linha = linha.replace("\n","")
-    dados.append(linha)
-arquivo.close()
-
-print(dados)
-
 dicionario = {}
-for atributos in dados:
-    atributo = atributos.split(" ")
-    dicionarioTemp = {atributo[0]:atributo[1]}
-    dicionario |= dicionarioTemp
+arquivo = open(r"ex001\arquivo.txt", "r")
+for linha in arquivo.readlines():
+    chave, valor = linha.replace("\n","").split(" ")
+    dicionario[chave] = valor
+arquivo.close()    
 
 print(dicionario)
