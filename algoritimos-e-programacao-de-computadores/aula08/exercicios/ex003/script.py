@@ -5,6 +5,8 @@
 #     Calcule e mostre a média das notas.
 #     Calcule e mostre a quantidade de notas acima da média calculada.
 
+# # Eu fiz algo diferente do enuciado, pois me deu vontade :)
+
 def exibirNotas(listasNotas):
     print("| AB1   | AB2   | SOMA  | MÉDIA |\n+-------+-------+-------+-------+")
     contador = 0

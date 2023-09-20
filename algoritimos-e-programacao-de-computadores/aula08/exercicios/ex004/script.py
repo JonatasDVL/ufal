@@ -15,12 +15,14 @@ media = 0
 i = 0
 print("Temperaturas por mês:")
 for temperatura in temperaturas:
-    i += 1
-    mes = calculaMes(i)
-    print(f"{mes}: {temperatura}°C")
     media += float(temperatura)
-    if i == 12:
-        i = 0
 
 media = media / len(temperaturas)
 print(f"Média anual das temperaturas: {media:.2f}°C")    
+for temperatura in temperaturas:
+    i += 1
+    mes = calculaMes(i)
+    if float(temperatura) > media:
+        print(f"{mes}: {temperatura}°C")
+    if i == 12:
+        i = 0
