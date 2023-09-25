@@ -1,0 +1,1 @@
+# 3. Faça um programa que recebe dados de vários contatos (nome, telefone, email) e escreve os dados em um arquivo csv. O programa tem uma função que lê o arquivo e faz busca pelo nome do contato.

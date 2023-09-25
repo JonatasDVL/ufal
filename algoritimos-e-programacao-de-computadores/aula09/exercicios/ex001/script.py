@@ -1,0 +1,1 @@
+# 1. Faça um programa que lê um arquivo csv contendo dados de temperatura e umidade em vários dias em uma cidade e diga qual foi o dia mais quente o mais frio da cidade.

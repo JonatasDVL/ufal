@@ -1,0 +1,1 @@
+# 2. Faça um programa que recebe do usuário duas notas de vários alunos e escreve um arquivo csv contendo as duas notas e a média do aluno.
