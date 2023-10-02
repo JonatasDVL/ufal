@@ -1,7 +1,5 @@
 # https://br.spoj.com/problems/ESTAGIO/
 
-#  entrada uma lista de nomes e de médias finais dos alunos de uma turma, e determina o aluno com a maior média na turma
-
 MAX_ALUNOS = 1000  # Define o número máximo de alunos
 
 def main():

@@ -10,6 +10,7 @@ n = int(input())
 n = max(1, min(n, 100000))
 
 candidatos = []
+vencedor = None
 
 for i in range(n):
     x = int(input())
@@ -20,16 +21,14 @@ for i in range(n):
         if x == candidatos[j]['codigo']:
             cond = True
             break  
-    if cond == False:
+    if not cond:
         candidatos.append({'codigo': x, 'votos': 1})
+        if vencedor is None:
+            vencedor = candidatos[0]
     else:
         candidatos[j]['votos'] += 1
-
-vencedor = candidatos[0]
-
-for i in range(len(candidatos)):
-    if candidatos[i]['votos'] > vencedor['votos']:
-        vencedor = candidatos[i]
+        if vencedor is None or candidatos[j]['votos'] > vencedor['votos']:
+            vencedor = candidatos[j]
 
 print()
 print(vencedor['codigo'])
