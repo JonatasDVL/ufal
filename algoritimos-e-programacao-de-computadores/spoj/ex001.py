@@ -27,7 +27,6 @@ def main():
             if alunos[i]['media'] > alunos[indice_melhor]['media']:
                 indice_melhor = i        
 
-
         # Imprime os resultados para a turma atual
         print(f'Turma {turma}')
         for i in range(0, n):

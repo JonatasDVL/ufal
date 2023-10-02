@@ -6,17 +6,30 @@
 # 1 ≤ n ≤ 100000
 # 1 < x ≤ 1000000000
 
-n = max(1, min(int(input()), 100000))
+n = int(input())
+n = max(1, min(n, 100000))
 
-candidatos = {}
+candidatos = []
 
 for i in range(n):
-    x = max(2, min(int(input()), 1000000000))
+    x = int(input())
+    x = max(1, min(x, 1000000000))
     cond = False
-    for j in len(candidatos):
-        if x == candidatos[j]:
+    j = 0 
+    for j in range(len(candidatos)):
+        if x == candidatos[j]['codigo']:
             cond = True
+            break  
     if cond == False:
-        candidatos[x]:1
+        candidatos.append({'codigo': x, 'votos': 1})
     else:
-        candidatos[x]:1
+        candidatos[j]['votos'] += 1
+
+vencedor = candidatos[0]
+
+for i in range(len(candidatos)):
+    if candidatos[i]['votos'] > vencedor['votos']:
+        vencedor = candidatos[i]
+
+print()
+print(vencedor['codigo'])
