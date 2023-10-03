@@ -6,6 +6,8 @@
 # 1 ≤ n ≤ 100000
 # 1 < x ≤ 1000000000
 
+# tenho que aculmular a saida
+
 n = int(input())
 n = max(1, min(n, 100000))
 
