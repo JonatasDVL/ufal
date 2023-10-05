@@ -6,31 +6,29 @@
 # 1 ≤ n ≤ 100000
 # 1 < x ≤ 1000000000
 
-# tenho que aculmular a saida
-
 n = int(input())
-n = max(1, min(n, 100000))
 
-candidatos = []
-vencedor = None
+if 1 <= n <= 100000:
+    candidatos = []
+    vencedor = None
 
-for i in range(n):
-    x = int(input())
-    x = max(1, min(x, 1000000000))
-    cond = False
-    j = 0 
-    for j in range(len(candidatos)):
-        if x == candidatos[j]['codigo']:
-            cond = True
-            break  
-    if not cond:
-        candidatos.append({'codigo': x, 'votos': 1})
-        if vencedor is None:
-            vencedor = candidatos[0]
-    else:
-        candidatos[j]['votos'] += 1
-        if vencedor is None or candidatos[j]['votos'] > vencedor['votos']:
-            vencedor = candidatos[j]
+    for i in range(n):
+        x = int(input())
+        if 1 < x <= 1000000000:
+            cond = False
+            j = 0 
+            for j in range(len(candidatos)):
+                if x == candidatos[j]['codigo']:
+                    cond = True
+                    break  
+            if not cond:
+                candidatos.append({'codigo': x, 'votos': 1})
+                if vencedor is None:
+                    vencedor = candidatos[0]
+            else:
+                candidatos[j]['votos'] += 1
+                if vencedor is None or candidatos[j]['votos'] > vencedor['votos']:
+                    vencedor = candidatos[j]
 
-print()
-print(vencedor['codigo'])
+    print(vencedor['codigo'])
+
