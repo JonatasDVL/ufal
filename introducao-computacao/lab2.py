@@ -26,7 +26,9 @@ def fatorial_recursivo(numero, fatorial=1):
         return fatorial_recursivo(numero, fatorial)
     return fatorial
 
-numero = int(input("Digite um número: "))
+def principal():
+    numero = int(input("Digite um número: "))
+    print(f"Esse é o resultado do fatorial iterativo: {fatorial_iterativo(numero)}")
+    print(f"Esse é o resultado do fatorial recursivo: {fatorial_recursivo(numero)}")
 
-print(fatorial_iterativo(numero))
-print(fatorial_recursivo(numero))
+principal()
