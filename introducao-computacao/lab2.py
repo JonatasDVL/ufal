@@ -15,14 +15,18 @@
 
 def fatorial_iterativo(numero):
     fatorial = 1 
-    for i in range(2, numero):
+    for i in range(2, numero+1):
         fatorial *= i
     return fatorial
 
-def fatorial_recursivo(numero):
+def fatorial_recursivo(numero, fatorial=1):
+    if 1 < numero:
+        fatorial *= numero
+        numero -= 1 
+        return fatorial_recursivo(numero, fatorial)
     return fatorial
 
 numero = int(input("Digite um número: "))
 
 print(fatorial_iterativo(numero))
-# print(fatorial_recursivo(numero))
+print(fatorial_recursivo(numero))
