@@ -38,7 +38,7 @@
     # with open('arquivo.txt', 'r') as arquivo:
     #     conteudo = arquivo.read()
 
-    # # O arquivo está automaticamente fechado aqui.
+    # O arquivo está automaticamente fechado aqui.
     
 # Manipulação de Arquivos Binários
     # Você pode trabalhar com arquivos binários, como imagens, usando os modos 'rb' e 'wb':
@@ -83,6 +83,7 @@
 
     # # Escrita em um arquivo CSV
     # df.to_csv('novo_dados.csv', index=False)
+    
     # Indexação e Seleção de Dados: Você pode selecionar dados com base em rótulos de colunas e índices de linhas usando operações de indexação, como .loc[] e .iloc[].
 
     # # Selecionando uma coluna
@@ -90,6 +91,7 @@
 
     # # Selecionando linhas com base em condições
     # selecao = df[df['idade'] > 25]
+    
     # Manipulação de Dados: O Pandas permite fazer operações como filtragem, ordenação, agrupamento e agregação de dados.
 
     # # Filtrando dados
@@ -146,3 +148,27 @@
     #     lista.append(linha)
     # arquivo.close()
 
+
+
+# import pandas as pd
+# df = pd.read_csv('vendas.csv')
+# print(df) # mostra a tabela inteira
+# print(df.head(10)) # mostra as x primeiras
+# print(df.tail(3)) # mostra as x ultimas
+# print(df.columns) # mostra as colunas
+# print(df.keys()) # mostras as colunas
+# print(df.email) # se vc colocar o nome da coluna ele ira mostrar todos os valores pertencentes aquela coluna, exemplo é email
+# print(df['name']) # pode achar assim tbm
+# print(df.sort_values(by='created_at')) # imprimi os dados organizados
+# print(df[df.email == 'jaida.schaden@example.com']) # imprimir as linhas que apresentam esse email
+# print(df[df.quantity > 3]) # apresenta quem teve quantity maior q 3
+
+# alunos = ['ana', 'carlos', 'gilberto', 'marta']
+# trabalhos = [9,8,7,6]
+# provas = [9,8,7,6]
+# seminarios = [9,8,7,6]
+# artigos = [9,8,7,6]
+
+# pdf = pd.DataFrame({'aluno': alunos,'trabalho': trabalhos, 'prova': provas, 'seminário': seminarios, 'artigo': artigos})
+# print(pdf)
+# pdf.to_csv('alunos.csv',index=False)
