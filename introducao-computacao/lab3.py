@@ -22,51 +22,69 @@
                 # converter_base(numero, base_origem, base_destino)
         # ◦ Podemos limitar as bases possíveis de 2 a 36. O limite até a base 36 é para assumir que nos limitaremos aos números e letras do alfabeto, ok?
 
+# Função para converter um número em base não decimal para base 10
 def converter_para_base10(numero, base_origem):
-    alfabeto = {"A": 10,"B": 11,"C": 12,"D": 13,"E": 14,"F": 15,"G": 16,"H": 17,"I": 18,"J": 19,
-                "K": 20,"L": 21,"M": 22,"N": 23,"O": 24,"P": 25,"Q": 26,"R": 27,"S": 28,"T": 29,
-                "U": 30,"V": 31,"W": 32,"X": 33,"Y": 34,"Z": 35} # 10 numeros(0-9) e 26 letras(a-z)
+    # Dicionário que mapeia caracteres alfabéticos (A-Z) para valores numéricos (10-35)
+    alfabeto = {"A": 10, "B": 11, "C": 12, "D": 13, "E": 14, "F": 15, "G": 16, "H": 17, "I": 18, "J": 19,
+                "K": 20, "L": 21, "M": 22, "N": 23, "O": 24, "P": 25, "Q": 26, "R": 27, "S": 28, "T": 29,
+                "U": 30, "V": 31, "W": 32, "X": 33, "Y": 34, "Z": 35}  # 10 números (0-9) e 26 letras (A-Z)
     resultado = 0
-    for pos, caractere in enumerate(numero,1):
+
+    # Loop através dos caracteres no número, da direita para a esquerda
+    for pos, caractere in enumerate(numero, 1):
         if caractere.isalpha():
-            caractere = alfabeto[f"{caractere}"]
-        resultado += int(caractere)*(base_origem**(len(numero)-pos)) 
+            caractere = alfabeto[f"{caractere}"]  # Se o caractere é alfabético, substitua pelo valor numérico correspondente
+        resultado += int(caractere) * (base_origem ** (len(numero) - pos))  # Adicione o valor do caractere ponderado pela posição
+
     return resultado
 
+# Função para converter um número em base 10 para outra base
 def converter_da_base10(numero, base_destino):
     restos = []
-    alfabeto = {"A": 10,"B": 11,"C": 12,"D": 13,"E": 14,"F": 15,"G": 16,"H": 17,"I": 18,"J": 19,
-                "K": 20,"L": 21,"M": 22,"N": 23,"O": 24,"P": 25,"Q": 26,"R": 27,"S": 28,"T": 29,
-                "U": 30,"V": 31,"W": 32,"X": 33,"Y": 34,"Z": 35}
-    numero = int(numero)
+    alfabeto = {"A": 10, "B": 11, "C": 12, "D": 13, "E": 14, "F": 15, "G": 16, "H": 17, "I": 18, "J": 19,
+                "K": 20, "L": 21, "M": 22, "N": 23, "O": 24, "P": 25, "Q": 26, "R": 27, "S": 28, "T": 29,
+                "U": 30, "V": 31, "W": 32, "X": 33, "Y": 34, "Z": 35}
+
+    numero = int(numero)  # Converta o número de entrada para um número inteiro
+
     while numero >= base_destino:
         resto = numero % base_destino
+
+        # Se o resto for maior que 9, substitua-o pelo caractere correspondente no alfabeto
         if resto > 9:
             a = list(alfabeto.keys())
-            resto = a[resto-10]
+            resto = a[resto - 10]
+
         restos.append(resto)
-        numero = numero // base_destino
-    restos.append(numero)
+        numero = numero // base_destino  # Atualize o número dividindo pela nova base
+
+    restos.append(numero)  # Adicione o último dígito
     resultado = ""
-    for i in range(1, len(restos)+1):
-        resultado += f"{restos[-i]}" 
+
+    # Monte o resultado concatenando os dígitos da lista de restos na ordem correta
+    for i in range(1, len(restos) + 1):
+        resultado += f"{restos[-i]}"
+
     return resultado
 
+# Função para converter um número entre bases diferentes
 def converter_base(numero, base_origem, base_destino):
     if base_origem != 10:
-        numero = converter_para_base10(numero, base_origem)
+        numero = converter_para_base10(numero, base_origem)  # Se a base de origem não for 10, converta para base 10
     if base_destino != 10:
-        resultado = converter_da_base10(numero, base_destino)
+        resultado = converter_da_base10(numero, base_destino)  # Se a base de destino não for 10, converta de base 10
         return resultado
     return numero
 
-
+# Função principal que interage com o usuário
 def principal():
-    numero = input("Digite um número: ").upper()
-    base_origem = int(input("Digite o número da base de origem: "))
-    base_destino = int(input("Digite o número da base de destino: "))
-    resultado = converter_base(numero, base_origem, base_destino)
+    numero = input("Digite um número: ").upper()  # Solicite ao usuário um número em formato alfanumérico
+    base_origem = int(input("Digite o número da base de origem: "))  # Solicite a base de origem
+    base_destino = int(input("Digite o número da base de destino: "))  # Solicite a base de destino
+    resultado = converter_base(numero, base_origem, base_destino)  # Realize a conversão
 
-    print(f"o número {numero}, escrito na base {base_origem} é equivalente ao número {resultado} na base {base_destino}")
+    # Exiba o resultado
+    print(f"O número {numero}, escrito na base {base_origem}, é equivalente ao número {resultado} na base {base_destino}")
 
+# Chame a função principal para iniciar o programa
 principal()
