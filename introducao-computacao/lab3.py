@@ -44,17 +44,13 @@ def converter_da_base10(numero, base_destino):
     alfabeto = {"A": 10, "B": 11, "C": 12, "D": 13, "E": 14, "F": 15, "G": 16, "H": 17, "I": 18, "J": 19,
                 "K": 20, "L": 21, "M": 22, "N": 23, "O": 24, "P": 25, "Q": 26, "R": 27, "S": 28, "T": 29,
                 "U": 30, "V": 31, "W": 32, "X": 33, "Y": 34, "Z": 35}
-
     numero = int(numero)  # Converta o número de entrada para um número inteiro
-
     while numero >= base_destino:
         resto = numero % base_destino
-
         # Se o resto for maior que 9, substitua-o pelo caractere correspondente no alfabeto
         if resto > 9:
             a = list(alfabeto.keys())
             resto = a[resto - 10]
-
         restos.append(resto)
         numero = numero // base_destino  # Atualize o número dividindo pela nova base
 
@@ -64,15 +60,17 @@ def converter_da_base10(numero, base_destino):
     # Monte o resultado concatenando os dígitos da lista de restos na ordem correta
     for i in range(1, len(restos) + 1):
         resultado += f"{restos[-i]}"
-
     return resultado
 
 # Função para converter um número entre bases diferentes
 def converter_base(numero, base_origem, base_destino):
-    if base_origem != 10:
+    if base_origem != 10 and base_destino != 1:
         numero = converter_para_base10(numero, base_origem)  # Se a base de origem não for 10, converta para base 10
-    if base_destino != 10:
+    if base_destino != 10 and base_destino != 1:
         resultado = converter_da_base10(numero, base_destino)  # Se a base de destino não for 10, converta de base 10
+        return resultado
+    if base_destino == 1:
+        resultado = "1"*int(numero)
         return resultado
     return numero
 
@@ -81,10 +79,21 @@ def principal():
     numero = input("Digite um número: ").upper()  # Solicite ao usuário um número em formato alfanumérico
     base_origem = int(input("Digite o número da base de origem: "))  # Solicite a base de origem
     base_destino = int(input("Digite o número da base de destino: "))  # Solicite a base de destino
-    resultado = converter_base(numero, base_origem, base_destino)  # Realize a conversão
-
-    # Exiba o resultado
-    print(f"O número {numero}, escrito na base {base_origem}, é equivalente ao número {resultado} na base {base_destino}")
+    numeros_maiores_base = list(filter(lambda x: x >= base_origem, list(map(int, numero.split()))))
+    if (len(numeros_maiores_base) > 0 and base_destino > 0 and base_origem > 0): # Verifica se a base original é maior que o numero dado
+        print("Não é foi possivel, tente novamente!")
+        # Chame a função principal para iniciar o programa
+        principal()
+    else:
+        if '-' in numero:
+            numero = numero.replace("-", "") 
+            resultado = converter_base(numero, base_origem, base_destino)  # Realize a conversão
+            resultado = f"-{resultado}"
+            numero = f"-{numero}"
+        else:
+            resultado = converter_base(numero, base_origem, base_destino)  # Realize a conversão
+        # Exiba o resultado
+        print(f"O número {numero}, escrito na base {base_origem}, é equivalente ao número {resultado} na base {base_destino}")
 
 # Chame a função principal para iniciar o programa
 principal()
