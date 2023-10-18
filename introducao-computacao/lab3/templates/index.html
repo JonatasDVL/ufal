@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Bases</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin: 0 auto;
+            max-width: 400px;
+            padding: 20px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label, input, select, button {
+            display: block;
+            margin: 10px 0px;
+        }
+        input[type="text"], select {
+            width: 94%;
+            padding: 10px;
+        }
+        button {
+            background: #333;
+            color: #fff;
+            border: none;
+            margin-top: 50px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #555;
+        }
+        #resultado {
+            margin: 20px 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Conversor de Bases</h1>
+    <form method="POST" action="/">
+        <label for="numero">Número:</label>
+        <input type="text" id="numero" name="numero" placeholder="Digite um número" required>
+        <label for="base_origem">Base de Origem:</label>
+        <input type="text" id="base_origem" name="base_origem" placeholder="Digite um número da base de origem[]" required>
+        <label for="base_destino">Base de Destino:</label>
+        <input type="text" id="base_destino" name="base_destino" placeholder="Digite um número da base de destino" required>
+        <button type="submit">Converter</button>
+    </form>
+    <p id="resposta">{{ resposta }}</p>
+</body>
+</html>

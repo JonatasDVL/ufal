@@ -25,6 +25,7 @@
 # Função para converter um número em base não decimal para base 10
 def converter_para_base10(numero, base_origem, alfabeto):
     resultado = 0
+    print(type(numero))
     # Loop através dos caracteres no número, da direita para a esquerda
     for pos, caractere in enumerate(numero, 1):
         if caractere.isalpha():
@@ -90,7 +91,7 @@ def principal(alfabeto):
             break
 
     # Verifica se a base original é maior que o numero dado
-    if (verifica == True or base_destino <= 1 or base_origem <= 1): 
+    if (verifica == True or base_destino <= 1 or base_origem <= 1 or base_destino > 36 or base_origem > 36): 
         print("Não é foi possivel, tente novamente!")
         principal(alfabeto) # Chame a função principal para iniciar o programa
     else:
