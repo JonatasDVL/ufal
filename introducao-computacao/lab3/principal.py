@@ -70,7 +70,7 @@ def principal():
             resposta = "Não é possível, tente novamente!"
         else:
             resultado2 = 0
-            if flutuante != "0":
+            if flutuante != 0:
                 resultado2 = converter_base(flutuante, base_origem, base_destino, alfabeto)
             if '-' in numero:
                 resultado = converter_base(numero.replace("-", ""), base_origem, base_destino, alfabeto)
