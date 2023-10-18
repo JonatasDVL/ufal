@@ -73,7 +73,7 @@ def converter_base(numero, base_origem, base_destino):
 
 # Função principal que interage com o usuário
 def principal():
-    flutuantes_maiores_base = None
+    flutuantes_maiores_base = "1"
     numero = input("Digite um número: ").upper()  # Solicite ao usuário um número em formato alfanumérico
     base_origem = int(input("Digite o número da base de origem: "))  # Solicite a base de origem
     base_destino = int(input("Digite o número da base de destino: "))  # Solicite a base de destino
