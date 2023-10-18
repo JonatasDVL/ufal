@@ -64,36 +64,44 @@ def converter_da_base10(numero, base_destino):
 
 # Função para converter um número entre bases diferentes
 def converter_base(numero, base_origem, base_destino):
-    if base_origem != 10 and base_destino != 1:
+    if base_origem != 10:
         numero = converter_para_base10(numero, base_origem)  # Se a base de origem não for 10, converta para base 10
-    if base_destino != 10 and base_destino != 1:
+    if base_destino != 10:
         resultado = converter_da_base10(numero, base_destino)  # Se a base de destino não for 10, converta de base 10
-        return resultado
-    if base_destino == 1:
-        resultado = "1"*int(numero)
         return resultado
     return numero
 
 # Função principal que interage com o usuário
 def principal():
+    flutuantes_maiores_base = None
     numero = input("Digite um número: ").upper()  # Solicite ao usuário um número em formato alfanumérico
     base_origem = int(input("Digite o número da base de origem: "))  # Solicite a base de origem
     base_destino = int(input("Digite o número da base de destino: "))  # Solicite a base de destino
+    numero = numero.replace(",", ".")
+    flutuante = 0
+    if "." in numero:
+        numero, flutuante = numero.split(".")
+        flutuantes_maiores_base = list(filter(lambda x: x >= base_origem, list(map(int, flutuante.split()))))
     numeros_maiores_base = list(filter(lambda x: x >= base_origem, list(map(int, numero.split()))))
-    if (len(numeros_maiores_base) > 0 and base_destino > 0 and base_origem > 0): # Verifica se a base original é maior que o numero dado
+    if (len(numeros_maiores_base) > 1 or len(flutuantes_maiores_base) > 1 or base_destino <= 1 or base_origem <= 1): # Verifica se a base original é maior que o numero dado
         print("Não é foi possivel, tente novamente!")
         # Chame a função principal para iniciar o programa
         principal()
     else:
+        resultado2 = 0
+        if flutuante != 0:
+                resultado2 = converter_base(flutuante, base_origem, base_destino)  # Realize a conversão 
         if '-' in numero:
             numero = numero.replace("-", "") 
             resultado = converter_base(numero, base_origem, base_destino)  # Realize a conversão
-            resultado = f"-{resultado}"
-            numero = f"-{numero}"
+            resultado = f"-{resultado}.{resultado2}"
+            numero = f"-{numero}.{flutuante}"
         else:
             resultado = converter_base(numero, base_origem, base_destino)  # Realize a conversão
+            resultado = f"{resultado}.{resultado2}"
+
         # Exiba o resultado
-        print(f"O número {numero}, escrito na base {base_origem}, é equivalente ao número {resultado} na base {base_destino}")
+        print(f"O número {numero}.{flutuante}, escrito na base {base_origem}, é equivalente ao número {resultado} na base {base_destino}")
 
 # Chame a função principal para iniciar o programa
 principal()
