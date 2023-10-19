@@ -3,39 +3,64 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 # Função para converter um número em base não decimal para base 10
-def converter_para_base10(numero, base_origem, alfabeto):
+def converter_para_base10(numero, flutuante, base_origem, alfabeto):
     resultado = 0
-    numero = str(numero)
+    # Loop através dos caracteres no número, da direita para a esquerda
     for pos, caractere in enumerate(numero, 1):
         if caractere.isalpha():
-            caractere = alfabeto[f"{caractere}"]
-        resultado += int(caractere) * (base_origem ** (len(numero) - pos))
-    return resultado
+            caractere = alfabeto[f"{caractere}"]  # Se o caractere é alfabético, substitua pelo valor numérico correspondente
+        resultado += int(caractere) * (int(base_origem)**int(len(numero)-pos)) # Adicione o valor do caractere ponderado pela posição
+
+    resultado2 = 0
+    for pos, caractere in enumerate(str(flutuante), 1):
+        if caractere.isalpha():
+            caractere = alfabeto[f"{caractere}"] # Se o caractere é alfabético, substitua pelo valor numérico correspondente
+        resultado2 += int(caractere) * (int(base_origem)**-pos) # Adicione o valor do caractere ponderado 
+    return resultado, resultado2
 
 # Função para converter um número em base 10 para outra base
-def converter_da_base10(numero, base_destino, alfabeto):
+def converter_da_base10(numero, flutuante, base_destino, alfabeto):
     restos = []
-    numero = int(numero)
+    numero = int(numero) # Converta o número de entrada para um número inteiro
     while numero >= base_destino:
         resto = numero % base_destino
+        # Se o resto for maior que 9, substitua-o pelo caractere correspondente no alfabeto
         if resto > 9:
             a = list(alfabeto.keys())
             resto = a[resto - 10]
         restos.append(resto)
-        numero = numero // base_destino
+        numero = numero // base_destino  # Atualize o número dividindo pela nova base
 
-    restos.append(numero)
+    restos.append(numero)  # Adicione o último dígito
     resultado = ""
+
+    # Monte o resultado concatenando os dígitos da lista de restos na ordem correta
     for i in range(1, len(restos) + 1):
         resultado += f"{restos[-i]}"
+
+    # Converta o número de entrada para um número inteiro
+    flutuante = float(flutuante)/10**len(str(flutuante))
+    resultado2 = ""
+    i = 0
+    while flutuante != 0 and i != 10:
+        inteiro = int(flutuante * base_destino)
+        flutuante = flutuante * base_destino - inteiro
+        # Se o resto for maior que 9, substitua-o pelo caractere correspondente no alfabeto
+        if inteiro > 9:
+            a = list(alfabeto.keys())
+            inteiro = a[inteiro - 10]
+        resultado2 += f"{inteiro}"
+        i += 1
+
+    resultado = f"{resultado}.{resultado2}"
     return resultado
 
 # Função para converter um número entre bases diferentes
-def converter_base(numero, base_origem, base_destino, alfabeto):
+def converter_base(numero, flutuante,base_origem, base_destino, alfabeto):
     if base_origem != 10:
-        numero = converter_para_base10(numero, base_origem, alfabeto)
+        numero, flutuante = converter_para_base10(numero, flutuante, base_origem, alfabeto) # Se a base_origem não for 10, converte da base 10
     if base_destino != 10:
-        resultado = converter_da_base10(numero, base_destino, alfabeto)
+        resultado = converter_da_base10(numero, flutuante, base_destino, alfabeto) # Se a base_destino não for 10, converte de base 10
         return resultado
     return numero
 
@@ -53,31 +78,29 @@ def principal():
         verifica = False
         flutuante = 0
         if "." in numero:
-            numero, flutuante = numero.split(".")
+            numero, flutuante = numero.split(".") 
             for n in flutuante:
                 if n.isalpha():
                     n = alfabeto[f"{n}"]
-                if int(n) >= base_origem:
+                if int(n) >= base_origem:    
                     verifica = True
                     break
-        for n in numero.replace("-", ""):
+        for n in numero.replace("-",""):
             if n.isalpha():
-                n = alfabeto[f"{n}"]
-            if int(n) >= base_origem or verifica == True:
+                    n = alfabeto[f"{n}"]
+            if int(n) >= base_origem or verifica == True:    
                 verifica = True
                 break
-        if (verifica == True or base_destino <= 1 or base_origem <= 1 or base_destino > 36 or base_origem > 36):
-            resposta = "Não é possível, tente novamente!"
+        # Verifica se a base original é maior que o numero dado
+        if (verifica == True or base_destino <= 1 or base_origem <= 1 or base_destino > 36 or base_origem > 36): 
+            print("Não é foi possivel, tente novamente!")
+            principal(alfabeto) # Chame a função principal para iniciar o programa
         else:
-            resultado2 = 0
-            if flutuante != 0:
-                resultado2 = converter_base(flutuante, base_origem, base_destino, alfabeto)
-            if '-' in numero:
-                resultado = converter_base(numero.replace("-", ""), base_origem, base_destino, alfabeto)
-                resultado = f"-{resultado}.{resultado2}"
+            if '-' in numero: 
+                resultado = converter_base(numero.replace("-", ""), flutuante, base_origem, base_destino, alfabeto)  
+                resultado = f"-{resultado}"
             else:
-                resultado = converter_base(numero, base_origem, base_destino, alfabeto)
-                resultado = f"{resultado}.{resultado2}"
+                resultado = converter_base(numero, flutuante, base_origem, base_destino, alfabeto)  
 
             resposta = f"O número {numero}.{flutuante}, escrito na base {base_origem}, é equivalente ao número {resultado} na base {base_destino}"
 

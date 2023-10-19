@@ -31,13 +31,11 @@ def converter_para_base10(numero, flutuante, base_origem, alfabeto):
             caractere = alfabeto[f"{caractere}"]  # Se o caractere é alfabético, substitua pelo valor numérico correspondente
         resultado += int(caractere) * (int(base_origem)**int(len(numero)-pos)) # Adicione o valor do caractere ponderado pela posição
 
-    print(flutuante)
     resultado2 = 0
     for pos, caractere in enumerate(str(flutuante), 1):
         if caractere.isalpha():
             caractere = alfabeto[f"{caractere}"] # Se o caractere é alfabético, substitua pelo valor numérico correspondente
         resultado2 += int(caractere) * (int(base_origem)**-pos) # Adicione o valor do caractere ponderado 
-        print(resultado2)
     return resultado, resultado2
 
 # Função para converter um número em base 10 para outra base
@@ -114,7 +112,6 @@ def principal(alfabeto):
         print("Não é foi possivel, tente novamente!")
         principal(alfabeto) # Chame a função principal para iniciar o programa
     else:
-        resultado2 = 0   
         if '-' in numero: 
             resultado = converter_base(numero.replace("-", ""), flutuante, base_origem, base_destino, alfabeto)  
             resultado = f"-{resultado}"
