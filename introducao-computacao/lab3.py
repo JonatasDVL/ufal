@@ -31,11 +31,13 @@ def converter_para_base10(numero, flutuante, base_origem, alfabeto):
             caractere = alfabeto[f"{caractere}"]  # Se o caractere é alfabético, substitua pelo valor numérico correspondente
         resultado += int(caractere) * (int(base_origem)**int(len(numero)-pos)) # Adicione o valor do caractere ponderado pela posição
 
+    print(flutuante)
     resultado2 = 0
     for pos, caractere in enumerate(str(flutuante), 1):
         if caractere.isalpha():
             caractere = alfabeto[f"{caractere}"] # Se o caractere é alfabético, substitua pelo valor numérico correspondente
         resultado2 += int(caractere) * (int(base_origem)**-pos) # Adicione o valor do caractere ponderado 
+        print(resultado2)
     return resultado, resultado2
 
 # Função para converter um número em base 10 para outra base
@@ -58,10 +60,11 @@ def converter_da_base10(numero, flutuante, base_destino, alfabeto):
     for i in range(1, len(restos) + 1):
         resultado += f"{restos[-i]}"
 
-    flutuante = int(flutuante) # Converta o número de entrada para um número inteiro
+    # Converta o número de entrada para um número inteiro
+    flutuante = float(flutuante)/10**len(flutuante)
     resultado2 = ""
     i = 0
-    while flutuante == 0 or i == 10:
+    while flutuante != 0 and i != 10:
         inteiro = int(flutuante * base_destino)
         flutuante = flutuante * base_destino - inteiro
         # Se o resto for maior que 9, substitua-o pelo caractere correspondente no alfabeto
@@ -69,7 +72,7 @@ def converter_da_base10(numero, flutuante, base_destino, alfabeto):
             a = list(alfabeto.keys())
             inteiro = a[inteiro - 10]
         resultado2 += f"{inteiro}"
-    i += 1
+        i += 1
 
     resultado = f"{resultado}.{resultado2}"
     return resultado
@@ -116,7 +119,7 @@ def principal(alfabeto):
             resultado = converter_base(numero.replace("-", ""), flutuante, base_origem, base_destino, alfabeto)  
             resultado = f"-{resultado}"
         else:
-            resultado = converter_base(numero, base_origem, flutuante, base_destino, alfabeto)  
+            resultado = converter_base(numero, flutuante, base_origem, base_destino, alfabeto)  
 
         print(f"O número {numero}.{flutuante}, escrito na base {base_origem}, é equivalente ao número {resultado} na base {base_destino}")
 
