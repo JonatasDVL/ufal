@@ -93,8 +93,7 @@ def principal():
                 break
         # Verifica se a base original é maior que o numero dado
         if (verifica == True or base_destino <= 1 or base_origem <= 1 or base_destino > 36 or base_origem > 36): 
-            print("Não é foi possivel, tente novamente!")
-            principal(alfabeto) # Chame a função principal para iniciar o programa
+            resposta = "Não é foi possivel, tente novamente!"
         else:
             if '-' in numero: 
                 resultado = converter_base(numero.replace("-", ""), flutuante, base_origem, base_destino, alfabeto)  
