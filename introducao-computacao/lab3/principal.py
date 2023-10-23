@@ -9,14 +9,14 @@ def converter_para_base10(numero, flutuante, base_origem, alfabeto):
     for pos, caractere in enumerate(numero, 1):
         if caractere.isalpha():
             caractere = alfabeto[f"{caractere}"]  # Se o caractere é alfabético, substitua pelo valor numérico correspondente
-        resultado += int(caractere) * (int(base_origem)**int(len(numero)-pos)) # Adicione o valor do caractere ponderado pela posição
+        resultado += int(caractere) * (int(base_origem)**int(len(numero)-pos)) # Adicione o valor do caractere ponderado pela posição 
 
     resultado2 = 0
     for pos, caractere in enumerate(str(flutuante), 1):
         if caractere.isalpha():
             caractere = alfabeto[f"{caractere}"] # Se o caractere é alfabético, substitua pelo valor numérico correspondente
         resultado2 += int(caractere) * (int(base_origem)**-pos) # Adicione o valor do caractere ponderado 
-    return resultado, resultado2
+    return resultado, resultado2 
 
 # Função para converter um número em base 10 para outra base
 def converter_da_base10(numero, flutuante, base_destino, alfabeto):
@@ -56,10 +56,10 @@ def converter_da_base10(numero, flutuante, base_destino, alfabeto):
     return resultado
 
 # Função para converter um número entre bases diferentes
-def converter_base(numero, flutuante,base_origem, base_destino, alfabeto):
-    if base_origem != 10:
+def converter_base(numero, flutuante, base_origem, base_destino, alfabeto):
+    if base_origem != 10 and base_destino != base_origem:
         numero, flutuante = converter_para_base10(numero, flutuante, base_origem, alfabeto) # Se a base_origem não for 10, converte da base 10
-    if base_destino != 10:
+    if base_destino != 10 and base_destino != base_origem:
         resultado = converter_da_base10(numero, flutuante, base_destino, alfabeto) # Se a base_destino não for 10, converte de base 10
         return resultado
     return numero

@@ -5,7 +5,7 @@
         # ◦ O sistema deve ler inicialmente uma base (de origem), um número nessa base e uma outra base (de destino).
         # ◦ Em seguida, deve executar uma função converter_base(numero, base_origem, base_destino).
         # ◦ Finalmente, deve apresentar uma mensagem informando que o número “numero”, escrito na base “base_origem” é equivalente ao número “resultado” na base “base_destino”.
-    
+     
     # Observações Adicionais:
         # ◦ OBS.1: Pode implementar com interface textual mesmo. A implementação com interface gráfica será valorizada como pontuação extra.
         # ◦ OBS.2: A conversão de números inteiros já vale 90% da atividade. Para garantir os 100%, deve incluir a conversão de números reais.
@@ -59,7 +59,7 @@ def converter_da_base10(numero, flutuante, base_destino, alfabeto):
         resultado += f"{restos[-i]}"
 
     # Converta o número de entrada para um número inteiro
-    flutuante = float(flutuante)/10**len(flutuante)
+    flutuante = float(flutuante)/10**len(str(flutuante))
     resultado2 = ""
     i = 0
     while flutuante != 0 and i != 10:
