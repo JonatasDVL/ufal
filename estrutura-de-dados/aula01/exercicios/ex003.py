@@ -7,14 +7,12 @@
 #  Função de Custo de Tempo deste Algoritmos:
 
 def calcularFatorial(fator, fatorial=1):
-    if fator != 1:
-        fatorial *= fator
-        fator -=1
-        return calcularFatorial(fator, fatorial)
+    if fator > 1:
+        return calcularFatorial(fator-1, fatorial*fator)
     else:
         return fatorial
 
-numero = 5
+numero = 10
 
 print(calcularFatorial(numero)) 
 
