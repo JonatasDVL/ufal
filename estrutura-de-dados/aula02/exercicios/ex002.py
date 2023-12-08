@@ -10,13 +10,15 @@ def elevacao(x, n):
     if (n == 0):
         if (x == 0):
             return "Inderterminação Matemática"
-        return 1
-    elif (n > 1):
+        else:
+            return 1
+    elif (x == 0 and n != 0):
+        return x
+    elif (n > 0):
         return x * elevacao(x, n-1)
-    elif (n < -1):
-        n = -n
-        x * elevacao(x, n-1)
-        return 1 / elevacao(x, n-1)
+    elif (n < 0):
+        n = -n 
+        return 1 / (x * elevacao(x, n-1))
 
     return x
 
@@ -25,9 +27,9 @@ def elevacao(x, n):
 # n = int(input("n: "))
 
 x = random.randint(-10, 10)
-n = random.randint(-10, 10)
+n = random.randint(-4, 5)
 
-print(f"{x} x {n} = {elevacao(x, n)}")
+print(f"{x}^{n} = {elevacao(x, n)}")
 
 
 #ainda tem um problema
