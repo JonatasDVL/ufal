@@ -5,18 +5,34 @@
 #  Exercício 03: Implemente uma função recursiva que, dada uma lista de inteiros ordenada, busque por um valor
 import random
 
-def buscadorNumero(lista, n, tamanho):
-    tamanho = tamanho-1
-    if (tamanho == -1):
+## Forma mesmo eficiente
+# def buscadorNumero(lista, n, tamanho):
+#     if (tamanho == -1):
+#         return False
+#     elif (lista[tamanho] == n):
+#         return True
+#     else:    
+#         return buscadorNumero(lista, n, tamanho-1)
+
+# Forma mais eficiente
+def buscadorNumero(lista, n, tamanho, times=2):
+    valor = len(lista)//(2**times)
+    if valor < 1:
+        valor = 1
+    if (times == 2):
+        tamanho = tamanho//2
+    if(times >= len(lista)//2+2 or tamanho < 0 or tamanho > len(lista)-1):
         return False
     elif (lista[tamanho] == n):
         return True
-    else:    
-        return buscadorNumero(lista, n, tamanho)
+    elif (lista[tamanho] > n):
+        return buscadorNumero(lista, n, tamanho-valor, times+1)
+    elif (lista[tamanho] < n):
+        return buscadorNumero(lista, n, tamanho+valor, times+1)
 
-
-lista = [-10,-9,-8,-7,-5,-4,-3,-1,0,1,2,4,5,6,7,8,10]
-n = random.randint(-20, 20)
+lista = [0,1,2,4,5,6,7,8,10]
+n = random.randint(-5, 15)
 # n = int(input("n: "))
 
-print(f"O número escolhido foi {n}\n{buscadorNumero(lista, n, len(lista))}")
+print(f"O número escolhido foi {n}")
+print(f"{buscadorNumero(lista, n, len(lista)-1)}")
