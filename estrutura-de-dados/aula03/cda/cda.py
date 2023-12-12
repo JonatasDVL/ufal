@@ -18,4 +18,6 @@ def buscadorNumero(lista, n):
     elif(lista[pontoMedio][1]["email"] < n):
         return buscadorNumero(lista[pontoMedio+1:], n)
 
-print(buscadorNumero(agenda_telefonica, "maria@gmail.com"))
+print(buscadorNumero(agenda_telefonica, "pedro@gmail.com"))
+
+# custo é log2n
