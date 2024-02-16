@@ -18,30 +18,35 @@ def compara(lista):
       i += 1
       j -= 1
 
-  if lista[i] < lista[pivo]:
-    lista[pivo], lista[i] = lista[i], lista[pivo]
-    pivo = i+1
-  elif lista[j] > lista[pivo]:
-    pivo = j
-    lista[pivo], lista[j] = lista[j], lista[pivo]
+  if len(lista) == 2:
+    lista1, lista2 = lista[:1], lista[1:]
+  else:
+    if lista[i] < lista[pivo]:
+      lista[pivo], lista[i] = lista[i], lista[pivo]
+      pivo = i+1
+    elif lista[j] > lista[pivo]:
+      pivo = j
+      lista[pivo], lista[j] = lista[j], lista[pivo]
 
-  lista1, lista2 = lista[:pivo], lista[pivo:]
+    lista1, lista2 = lista[:pivo], lista[pivo:]
 
   print(lista1,lista2)
   return lista1, lista2
 
 def quickSort(lista):
-  lista1, lista2 = compara(lista)
+  lista2 = divisaoQuick(lista)
+  lista = []
+  for i in lista2:
+    lista.append(i)
   return lista
 
-# def quickSort(lista):
-#   if len(lista) == 4:
-#     print(lista)    
-#   else:
-#     lista1, lista2 = compara(lista)
-#     return quickSort(lista1), quickSort(lista2) 
-#   return lista
-
+def divisaoQuick(lista):
+  if len(lista) == 1:
+    return lista    
+  else:
+    lista1, lista2 = compara(lista)
+    return quickSort(lista1), quickSort(lista2) 
+  
 listaUm = [3,5,8,4,2,1,9,0]
 listaDois = [3,5,8,1,2,1,9,0]
 listaTres = [9,8,7,6,5,4,3,2,1,0]
