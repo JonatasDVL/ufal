@@ -10,9 +10,11 @@ def combinaListasOrdenando(lista1, lista2):
   tamanhoDaLista2 = len(lista2)
   while i < tamanhoDaLista1 and j < tamanhoDaLista2:
     if lista1[i] <= lista2[j]:
+      print(f"{lista1[i]} <= {lista2[j]}")
       lista3.append(lista1[i])
       i += 1
     else:
+      print(f"{lista1[i]} > {lista2[j]}")
       lista3.append(lista2[j])
       j += 1
   lista3 = lista3 + lista1[i:]
@@ -45,10 +47,13 @@ def quickSort(lista):
     lista3 = []
     for i in lista:
       if i < pivo:
+        print(f"{i} < {pivo}")
         lista1.append(i)
       elif i == pivo:
+        print(f"{i} == {pivo}")
         lista2.append(i)
       else:
+        print(f"{i} > {pivo}")
         lista3.append(i)
     print(f"Divindindo Lista em Três em Ordem do Pivô({pivo}): {lista1} {lista2} {lista3}")
     print(f"Retornando Lista: {lista2}")
@@ -65,3 +70,37 @@ print("------------\nProcesso de MergeSort: ")
 lista2 = mergeSort(lista2)
 print("Resultado do MergeSort:\n",lista2)
 
+
+
+# outro quickSort que fiz:
+
+# def quickSort(lista): 
+#   tamanhoDaLista = len(lista)
+#   if tamanhoDaLista <= 1:
+#     return lista
+#   else:
+#     pivo = tamanhoDaLista//2
+#     i = 0
+#     j = tamanhoDaLista-1
+#     while i < j:
+#       if lista[i] <= lista[pivo] and i != pivo:
+#         i += 1
+#       elif lista[j] >= lista[pivo] and j != pivo:
+#         j -= 1
+#       else:
+#         lista[i], lista[j] = lista[j], lista[i]
+#         if pivo == j:
+#           pivo = i
+#           i -=1
+#         elif pivo == i:
+#           pivo = j
+#           j +=1
+#         i +=1
+#         j -=1
+#     return quickSort(lista[:pivo]) + quickSort(lista[pivo:])
+
+# lista1 = [9,8,7,6,5,4,3,2,1]
+
+# print("------------\nProcesso de QuickSort: ")
+# lista1=quickSort(lista1)
+# print(lista1)

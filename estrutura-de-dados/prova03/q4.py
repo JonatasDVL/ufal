@@ -3,9 +3,9 @@
 
 def quickSort(lista): 
   tamanhoDaLista = len(lista)
-  if tamanhoDaLista < 1:
+  if tamanhoDaLista <= 1:
     return lista
-  elif tamanhoDaLista <= 4:
+  elif tamanhoDaLista <= 4: # sub-vetores de tamanho <= a 4 e > 1 
     return selectionSort(lista)
   else:
     pivo = lista[tamanhoDaLista - 1]

@@ -20,6 +20,6 @@ def selectionSortInvertido(lista):
 
 
 
-lista = [5,4,3,2,1]
+lista = [9,8,7,6,5,4,3,2,3,1]
 selectionSortInvertido(lista)
 
