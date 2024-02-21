@@ -1,0 +1,2 @@
+# 5. Implemente uma função que simula a navegação de páginas em um navegador web onde o usuário possa retornar a páginas anteriores mantendo a ordem inversa de visita.
+# Utilize uma pilha encadeada para resolver o problema.
