@@ -13,7 +13,7 @@ class Fila():
   def vazia(self):
     return self.inicio == None
   
-  def inserir(self, numero_de_chegada, nome="NI"): #Não informado = NI
+  def inserir(self, numero_de_chegada, nome="Nome Inderteminado"):
     p = Pessoa(numero_de_chegada, nome)
     if self.vazia():
       self.inicio = p
@@ -29,17 +29,17 @@ class Fila():
       self.inicio = self.inicio.proximo
       del aux
       return numero, nome
-    else:
-      return None
+    return None, None
 
 
   def imprimir(self):
     if not(self.vazia()):
+      print("Fila:")
       aux = self.inicio
       while aux != None:
         print(f"Nº {aux.numero_de_chegada}: {aux.nome}") 
         aux = aux.proximo
       return True
-    else:
-      print("Fila Vazia")
-      return False
+    print("Fila Vazia")
+    return False
+    
