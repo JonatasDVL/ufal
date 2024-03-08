@@ -6,7 +6,6 @@ caixa1 = Atendente("Cleide", "01")
 caixa2 = Atendente("Joshon", "02")
 caixa3 = Atendente("Paulo", "03")
 
-
 print("Bem-vindo ao sistema dos Correios!")
 aberto = True
 i = 1
