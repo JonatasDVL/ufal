@@ -68,9 +68,9 @@ class Caixas():
         nomeAtendente = input(f"Digite o nome do atendente Nº 0{i}: ")
         self.caixas.append(Caixa(nomeAtendente, f"0{i}"))
     else:
-      self.caixas.append(Caixa("Rodolfo", "1"))
-      self.caixas.append(Caixa("Patrick", "2"))
-      self.caixas.append(Caixa("Raquel", "3"))
+      self.caixas.append(Caixa("Rodolfo", "01"))
+      self.caixas.append(Caixa("Patrick", "02"))
+      self.caixas.append(Caixa("Raquel", "03"))
 
   def contarAbertos(self):
     count = 0
@@ -101,8 +101,4 @@ class Caixas():
           print(f"Caixa Nº 0{caixa.numeroCaixa}: {caixa.nome}")
     elif opcao == 0:
       for caixa in self.caixas:
-        print(f"Caixa Nº 0{caixa.numeroCaixa}: {caixa.nome}")
-
-
-    # for i in range(self.quantidadeDeCaixa):
-    #   print(f"Caixa Nº 0{i+1}: {self.caixas[i].nome}")
+        print(f"Caixa Nº {caixa.numeroCaixa}: {caixa.nome}")

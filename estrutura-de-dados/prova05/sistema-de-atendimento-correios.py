@@ -2,7 +2,7 @@ from fila import Fila
 from caixas import Caixas
 
 fila = Fila()
-modoTeste = True
+modoTeste = False # Aqui muda o modo de teste, ou seja, a entrada das Caixas 
 
 print("------------------------------------------")
 print("Bem-vindo ao sistema de atendimento dos Correios")
@@ -16,7 +16,9 @@ if not(modoTeste):
       quantidadeDeCaixa = int(input("Digite a quantidade de atendente: "))
       if quantidadeDeCaixa > 9:
         print("O máximo de caixas ativo é de 9")
-        quantidadeDeCaixa = 9
+        quantidadeDeCaixa = None
+      elif quantidadeDeCaixa < 1:
+        quantidadeDeCaixa = None
     except ValueError:
       print("Você digitou um valor inválido, tente novamente!")
       quantidadeDeCaixa = None
@@ -77,10 +79,6 @@ while aberto or not(fila.vazia()) or caixasObjeto.contarOcupados() != 0:
     except ValueError:
       opcao = 1000
     print("------------------------------------------")
-
-    # ajeitar
-      #     for caixa in caixas:
-      # if not(caixas.ocupado()):
     
     try:
       caixas[opcao-1].ocupado()
@@ -112,7 +110,6 @@ while aberto or not(fila.vazia()) or caixasObjeto.contarOcupados() != 0:
     else:
       print("Valor Inválido")
 
-# ajeitado
   elif opcao == j-1 and aberto == True:
     nome = input(f"Digite o nome do cliente de Nº {i}: ")
     if len(nome) >= 2:
