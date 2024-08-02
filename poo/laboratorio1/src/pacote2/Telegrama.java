@@ -1,4 +1,4 @@
-package laboratorio1.pacote2;
+package pacote2;
 
 public class Telegrama {
   
