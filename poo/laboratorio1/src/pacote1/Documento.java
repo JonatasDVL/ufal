@@ -14,6 +14,10 @@ public class Documento {
     this.data = data;
   };
 
+  public String getData(){
+    return this.data;
+  }
+
   public void mostrar() {
     System.out.printf("Nome: %s \nData: %s \n", this.nome, this.data);
   };
