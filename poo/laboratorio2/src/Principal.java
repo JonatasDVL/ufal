@@ -24,7 +24,7 @@ public class Principal {
         operacao = new Multiplicacao();
       } else if (entrada.equals("d")) {
         operacao = new Divisao();
-      }
+      } 
       
       if (operacao != null) {
         System.out.println("Digite o primeiro número:");
