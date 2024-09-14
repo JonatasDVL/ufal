@@ -1,7 +1,7 @@
 public class PrincipalCarro {
     public static void main(String[] args) throws Exception {
-        Motor motor1 = new MotorDiesel();
-        Motor motor2 = new MotorFlex();
+        IMotor motor1 = new MotorDiesel();
+        IMotor motor2 = new MotorFlex();
         Carro carro1 = new Carro("gol", "preto", motor1);
         Carro carro2 = new Carro("ford ka", "cinza", motor2);
         

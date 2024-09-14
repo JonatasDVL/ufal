@@ -3,16 +3,16 @@ public class Carro {
 	private String cor;
 	private float velocidade;
 	private Tanque tanque;
-	private Motor motor;
+	private IMotor motor;
 
-	public Carro(String modelo, String cor, Motor motor) {
+	public Carro(String modelo, String cor, IMotor motor) {
 		this.modelo = modelo;
 		this.cor = cor;
 		this.motor = motor;
 		this.tanque = new Tanque(45);
 	}
 
-	public Carro(String modelo, String cor, Motor motor, Tanque tanque) {
+	public Carro(String modelo, String cor, IMotor motor, Tanque tanque) {
 		this.modelo = modelo;
 		this.cor = cor;
 		this.motor = motor;
